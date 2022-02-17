@@ -34,6 +34,12 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      regDate: {
+        type: Sequelize.DATEONLY,
+        get: function() {
+          return moment.utc(this.getDataValue('regDate')).format('YYYY-MM-DD');
+        }
+      },
       time: {
         type: Sequelize.STRING,
         allowNull: false,
