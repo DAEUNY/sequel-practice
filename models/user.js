@@ -15,23 +15,24 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
         sourceKey: "id",
+      }, {
       });
 
       models.User.hasMany(models.Report, {
         foreignKey: "user_id",
-        // onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
         constraint: true,
       });
       models.User.hasMany(models.Chat, {
         foreignKey: "user_id",
-        // onDelete: 'SET NULL',
-        // onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
         // foreignKeyConstraint: true,
         constraint: true,
       });
       models.User.belongsTo(models.Region, {
         foreignKey: "region_id",
-        // onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE'
       });
     }
   }
@@ -72,6 +73,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "User",
+      timestamps: true
     }
   );
   return User;

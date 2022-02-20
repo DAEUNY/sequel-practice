@@ -8,12 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      user_id: {
-        type: Sequelize.INTEGER,
-      },
-      article_id: {
-        type: Sequelize.INTEGER,
-      },
+      // user_id: {
+      //   type: Sequelize.INTEGER,
+      //   name: "chats_user_id_fk",
+      // },
+      // article_id: {
+      //   type: Sequelize.INTEGER,
+      // },
       contents: {
         type: Sequelize.STRING,
         allowNull: false,

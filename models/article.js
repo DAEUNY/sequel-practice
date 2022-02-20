@@ -12,23 +12,23 @@ module.exports = (sequelize, DataTypes) => {
       models.Article.belongsToMany(models.User, {
         through: "UserArticles",
         foreignKey: "article_id",
-        // onUpdate: 'CASCADE',
-        // onDelete: 'CASCADE',
-        // sourceKey: 'id'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        sourceKey: 'id'
       });
       models.Article.belongsTo(models.Category, {
         foreignKey: "category_id",
-        // onDelete: 'CASCADE',
-        // onUpdate: 'CASCADE'
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       });
       models.Article.belongsTo(models.Region, {
         foreignKey: "region_id",
-        // onUpdate: 'CASCADE',
+        onUpdate: 'CASCADE',
       });
       models.Article.hasMany(models.Chat, {
         foreignKey: "article_id",
-        // onDelete: 'CASCADE',
-        // onUpdate: 'CASCADE'
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
         constraint: true,
       });
     }
@@ -84,6 +84,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Article",
+      timestamps: true,
+      
     }
   );
   return Article;

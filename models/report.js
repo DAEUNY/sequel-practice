@@ -1,5 +1,5 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Model, Sequelize } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Report extends Model {
     /**
@@ -24,12 +24,23 @@ module.exports = (sequelize, DataTypes) => {
       count: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 1,
+        // defaultValue: 1,
       },
+      createdAt: {
+        type: DataTypes.DATE, defaultValue: DataTypes.NOW
+      },
+      // updatedAt: {
+      //   allowNull: false,
+      //   type: 'TIMESTAMP',
+      //   // type: DataTypes.DATE,
+      //   // defaultValue: Sequelize.fn("NOW"),
+      // },
     },
     {
       sequelize,
       modelName: "Report",
+      timestamps: true,
+      createdAt: true
     }
   );
   return Report;
